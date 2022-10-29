@@ -27,7 +27,7 @@ export default function Home() {
         />
       </Head>
       <ColorModeScript initialColorMode={'light'} />
-      <Box>
+      <Box px={'140px'} py={'32px'}>
         <Menu />
       </Box>
     </div>
