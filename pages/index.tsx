@@ -1,5 +1,6 @@
-import { Box, ColorModeScript } from "@chakra-ui/react";
+import { Box, ColorModeScript, Flex, Text } from "@chakra-ui/react";
 import Head from "next/head";
+import Card from "../src/components/Card";
 import Menu from "../src/components/Menu";
 
 export default function Home() {
@@ -26,9 +27,27 @@ export default function Home() {
           key="fonts"
         />
       </Head>
-      <ColorModeScript initialColorMode={'light'} />
-      <Box px={'140px'} py={'32px'}>
+      <ColorModeScript initialColorMode={"light"} />
+      <Box px={"140px"} py={"32px"}>
         <Menu />
+        <Box h={"100%"}>
+          <Flex alignItems={'center'} justifyContent={'center'}>
+            <Text fontFamily={"Raleway"} fontSize={"30px"} color={"#310E2B"}>
+              Selecione um drink misterioso:
+            </Text>
+          </Flex>
+          <Card />
+        </Box>
+        <Flex w={"100%"} alignItems={"center"} justifyContent={"center"}>
+          <Text
+            my={"32px"}
+            fontFamily={"Raleway"}
+            fontSize={"24px"}
+            color={"#310E2B"}
+          >
+            beba com moderação
+          </Text>
+        </Flex>
       </Box>
     </div>
   );
