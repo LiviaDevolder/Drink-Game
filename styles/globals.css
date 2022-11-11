@@ -1,7 +1,7 @@
 html,
 body {
-  background: linear-gradient(243.18deg, #B552A5 0%, #CF6529 100%) !important;
-  color: #310E2B;
+  background: linear-gradient(243.18deg, #B552A5 0%, #CF6529 100%) fixed !important;
+  color: #310E2B !important;
   padding: 0;
   margin: 0;
   font-family: Roboto, sans-serif;

@@ -6,7 +6,7 @@ import GlitterDrink from "../../../public/GlitterDrink";
 import MoscowMule from "../../../public/MoscowMule";
 import { ICard } from "../../interfaces";
 
-export default function Card({ name, steps, ingredients }: ICard) {
+export default function Card({ name }: ICard) {
   return (
     <Link href="/drink/[name]" as={`/drink/${name.split(" ").join("-")}`}>
       <Flex

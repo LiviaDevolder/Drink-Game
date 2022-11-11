@@ -1,7 +1,7 @@
-import { Box, Flex, Text } from "@chakra-ui/react";
+import { Checkbox, Flex, ListItem, OrderedList, Text } from "@chakra-ui/react";
 import { useRouter } from "next/router";
 import useSWR from "swr";
-import Menu from "../../src/components/Menu";
+import Card from "../../src/components/Card";
 
 const fetcher = async (url: string) => {
   const res = await fetch(url);
@@ -14,27 +14,46 @@ const fetcher = async (url: string) => {
 };
 
 export default function Drink() {
-  const { query } = useRouter()
+  const { query } = useRouter();
   const { data, error } = useSWR(`/api/${query.name}`, fetcher);
 
   if (error) return <div>{error.message}</div>;
   if (!data) return <div>Loading...</div>;
 
   return (
-    <div>
-      <Box px={"140px"} py={"32px"}>
-        <Menu />
-        <Flex w={"100%"} alignItems={"center"} justifyContent={"center"}>
-          <Text
-            my={"32px"}
-            fontFamily={"Raleway"}
-            fontSize={"24px"}
-            color={"#310E2B"}
-          >
-            beba com moderação
+    <Flex px={"100px"} paddingTop={"48px"} flexDir={"column"} gap={"20px"}>
+      <Text fontFamily={"Raleway"} fontSize={"38px"}>
+        {data.name}
+      </Text>
+      <Flex gap={"20px"}>
+        <Card name={data.name} ingredients={[]} steps={[]} />
+        <Flex flexDir={"column"}>
+          <Text fontFamily={"Raleway"} fontSize={"30px"}>
+            Ingredientes
           </Text>
+          {data.ingredients.map((ingredient: string, index: number) => {
+            return (
+              <Checkbox colorScheme={"white"} size={"lg"} key={index}>
+                {ingredient}
+              </Checkbox>
+            );
+          })}
         </Flex>
-      </Box>
-    </div>
+      </Flex>
+      <Flex flexDir={"column"}>
+        <Text fontFamily={"Raleway"} fontSize={"30px"}>
+          Preparo
+        </Text>
+        <OrderedList marginLeft={"22px"}>
+          {data.steps.map((step: string, index: number) => {
+            return (
+              <ListItem fontSize={"18px"} key={index}>
+                {step}
+              </ListItem>
+            );
+          })}
+        </OrderedList>
+      </Flex>
+    </Flex>
   );
 }

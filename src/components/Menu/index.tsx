@@ -18,7 +18,6 @@ export default function Menu() {
           cursor={"pointer"}
           fontFamily={"Raleway"}
           fontSize={"40px"}
-          color={"#310E2B"}
         >
           Receitas
         </Text>
@@ -29,7 +28,6 @@ export default function Menu() {
           cursor={"pointer"}
           fontFamily={"Raleway"}
           fontSize={"40px"}
-          color={"#310E2B"}
         >
           Roleta
         </Text>
